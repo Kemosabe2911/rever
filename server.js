@@ -5,7 +5,22 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
+const bcrypt = require('bcryptjs');
 
+//User model
+const User = require('./models/User');
+
+// Connect flash
+app.use(flash());
+
+// Express session
+app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true
+    })
+  );
 
 //EJS
 app.set('view engine', 'ejs');
@@ -29,7 +44,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/login',(req,res)=>{
-    res.render('login');
+    res.render('login',{expressFlash: req.flash('success_msg') });
 })
 
 app.post('/',(req,res) =>{
@@ -57,10 +72,44 @@ app.post('/',(req,res) =>{
         password,
         password2
       });
-    }
+    }else{
+        User.findOne({ email: email }).then(user => {
+            if (user) {
+              errors.push({ msg: 'Email already exists' });
+              res.render('register', {
+                errors,
+                name,
+                email,
+                password,
+                password2
+              });
+            } else {
+            const newUser = new User({
+                name,
+                email,
+                password
+                });
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+                      if (err) throw err;
+                      newUser.password = hash;
+                      newUser
+                        .save()
+                        .then(user => {
+                          req.flash(
+                            'success_msg',
+                            'You are now registered and can log in'
+                          );
+                          res.redirect('/login');
+                        })
+                        .catch(err => console.log(err));
+                    });
+                });   
+            }
+    })}
 })
 
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server running on ${PORT}`));
+app.listen(PORT, console.log(`Server running on ${PORT}`))
