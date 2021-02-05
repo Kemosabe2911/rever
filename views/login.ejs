@@ -18,6 +18,14 @@
           </button>
         </div>
       <% } %> 
+      <% if( expressFlashError.length > 0) { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <%=  expressFlashError %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% } %>
       <form action="/login" method="POST" >
         <div class="user-box">
           <input type="email" name="email" id="email" value="<%= typeof email != 'undefined' ? email : ''%>" required="" />

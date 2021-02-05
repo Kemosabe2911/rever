@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const bcrypt = require('bcryptjs');
+const { ensureAuthenticated, forwardAuthenticated } = require('./ config/auth');
 
 //User model
 const User = require('./models/User');
@@ -46,13 +47,22 @@ mongoose.connect(db,{ useNewUrlParser: true, useUnifiedTopology: true})
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/',(req,res)=>{
+app.get('/',forwardAuthenticated,(req,res)=>{
     res.render('register');
 })
 
-app.get('/login',(req,res)=>{
-    res.render('login',{expressFlash: req.flash('success_msg') });
+app.get('/login',forwardAuthenticated,(req,res)=>{
+    res.render('login',{expressFlash: req.flash('success_msg'),
+    expressFlashError : req.flash('error_msg')});
 })
+
+// Global variables
+app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+  });
 
 app.post('/',(req,res) =>{
     const {name, email, password,password2} = req.body;
@@ -125,8 +135,11 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
-app.get('/home',(req,res) =>{
-    res.render('home');
+
+app.get('/home',ensureAuthenticated,(req,res) =>{
+    res.render('home',{
+        user: req.user
+    });
 })
 
 const PORT = process.env.PORT || 5000;
