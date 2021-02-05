@@ -10,6 +10,9 @@ const bcrypt = require('bcryptjs');
 //User model
 const User = require('./models/User');
 
+// Passport Config
+require('./ config/passport')(passport);
+
 // Connect flash
 app.use(flash());
 
@@ -21,6 +24,10 @@ app.use(
       saveUninitialized: true
     })
   );
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //EJS
 app.set('view engine', 'ejs');
@@ -109,6 +116,18 @@ app.post('/',(req,res) =>{
     })}
 })
 
+// Login
+app.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: '/home',
+      failureRedirect: '/login',
+      failureFlash: true
+    })(req, res, next);
+  });
+
+app.get('/home',(req,res) =>{
+    res.render('home');
+})
 
 const PORT = process.env.PORT || 5000;
 
