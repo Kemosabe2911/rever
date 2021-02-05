@@ -135,7 +135,7 @@ app.post('/login', (req, res, next) => {
   });
 
 app.get('/',(req,res) =>{
-  res.send('Hello');
+  res.render('welcome');
 })
 
 app.get('/home',ensureAuthenticated,(req,res) =>{
