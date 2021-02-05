@@ -47,13 +47,12 @@ mongoose.connect(db,{ useNewUrlParser: true, useUnifiedTopology: true})
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/',forwardAuthenticated,(req,res)=>{
+app.get('/register',forwardAuthenticated,(req,res)=>{
     res.render('register');
 })
 
 app.get('/login',forwardAuthenticated,(req,res)=>{
-    res.render('login',{expressFlash: req.flash('success_msg'),
-    expressFlashError : req.flash('error_msg')});
+    res.render('login',{expressFlash: req.flash('success_msg')});
 })
 
 // Global variables
@@ -64,7 +63,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.post('/',(req,res) =>{
+app.post('/register',(req,res) =>{
     const {name, email, password,password2} = req.body;
     //console.log(name,email,password,password2);
     let errors = [];
@@ -135,6 +134,9 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+app.get('/',(req,res) =>{
+  res.send('Hello');
+})
 
 app.get('/home',ensureAuthenticated,(req,res) =>{
     res.render('home',{
