@@ -48,7 +48,7 @@ body {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin: 20px;
+	margin: 10px;
 	padding: 0px 20px;
 	margin-bottom: 40px;
 }
@@ -205,5 +205,11 @@ nav .close:hover div::after{
     top: 25px;
     left: 25px;
     font-size: 35px;
-}
+  }
+  .tiles{
+	  flex-direction: column;
+  }
+  .tiles .tile{
+	  width: 80vw;
+  }
 }
