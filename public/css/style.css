@@ -37,7 +37,27 @@ body {
 	line-height: 1.4;
 }
 .section-top h1{
-	font-size: 3em;
+	font-size: 5em;
+	margin: 20px 0px;
+}
+
+.tiles{
+	position: absolute;
+	top: 100%;
+	width: 100vw;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px;
+	padding: 0px 20px;
+	margin-bottom: 40px;
+}
+.tiles .tile{
+	width: 25vw;
+	padding: 20px;
+	border: 1px solid #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+	margin-bottom: 20px;
 }
 
 h1 {
