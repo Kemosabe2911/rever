@@ -28,9 +28,10 @@ body{
 .container p{
     font-size: 2em;
     margin: 20px 0px;
+    text-align: center;
 }
 .btns-container{
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: 40px ;
 }
 .btns-container a.one{
