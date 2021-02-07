@@ -60,6 +60,40 @@ body {
 	margin-bottom: 20px;
 }
 
+.section-mid{
+	position: absolute;
+	top: 130%;
+	width: 90vw;
+	margin: auto;
+}
+
+.section-container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40vh;
+	margin: 20px 0px;
+}
+.section-container .content{
+	width: 60%;
+	padding: 50px;
+	border: 2px solid #000;
+	box-shadow: 0px 0px 5px #ccc;
+	line-height: 1.5;
+}
+
+.section-container .content-img{
+	height: 100%;
+	width: 30%;
+}
+.section-container .content-img img{
+	width: 100%;
+	height: 100%;
+}
+.one{
+	order: 1;
+}
+
 h1 {
 	font-size: 40px;
   text-align: center;
@@ -211,5 +245,22 @@ nav .close:hover div::after{
   }
   .tiles .tile{
 	  width: 80vw;
+  }
+  .section-mid{
+	  top: 200%;
+  }
+  .section-container{
+	  flex-direction: column;
+  }
+  .section-container .content{
+	  width: 100%;
+	  order: 2;
+  }
+  .section-container .content-img{
+	  width: 100%;
+	  order: 1;
+  }
+  .mt{
+	  margin-top: 100%;
   }
 }
