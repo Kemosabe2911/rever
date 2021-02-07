@@ -231,6 +231,39 @@ nav .close:hover div::after{
     align-items: center;
 }
 
+footer{
+	position: absolute;
+	top: 230%;
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #fff;
+	background-color: #000;
+}
+footer .footer-links{
+	width: 90vw;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+}
+footer .footer-links ul{
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+}
+footer .footer-links a{
+	text-decoration: none;
+	color: #fff;
+}
+footer .footer-content{
+	margin: 20px;
+}
+
 @media (max-width: 992px){
   h1{
     font-size: 25px;
@@ -247,7 +280,7 @@ nav .close:hover div::after{
 	  width: 80vw;
   }
   .section-mid{
-	  top: 200%;
+	  top: 180%;
   }
   .section-container{
 	  flex-direction: column;
@@ -262,5 +295,14 @@ nav .close:hover div::after{
   }
   .mt{
 	  margin-top: 100%;
+  }
+  footer{
+	  top: 380%;
+  }
+  .footer-links ul{
+	  flex-direction: column;
+  }
+  .footer-links ul li{
+	  margin: 10px 0px;
   }
 }
