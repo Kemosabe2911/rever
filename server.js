@@ -156,6 +156,10 @@ app.get('/about',ensureAuthenticated,(req,res) =>{
   res.render('about')
 })
 
+app.get('/contact',ensureAuthenticated,(req,res) =>{
+  res.render('contact')
+})
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server running on ${PORT}`))
