@@ -134,6 +134,12 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+app.get('/logout',(req,res) =>{
+    req.logout();
+    req.flash("success_msg", "You have logged out");
+    res.redirect('/login');
+});
+
 app.get('/',(req,res) =>{
   res.render('welcome');
 })
