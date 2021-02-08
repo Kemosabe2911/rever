@@ -13,85 +13,35 @@ body {
 	align-items: center;
 	overflow-x: hidden;
 }
-
-.section-top{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	z-index: 1;
-}
-.section-top img{
-	width: 100%;
-	height: 100%;
-}
-.section-top .section-top-content{
-	position: absolute;
-	z-index: 2;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	text-align: center;
-	color: #fff;
-	line-height: 1.4;
-}
-.section-top h1{
-	font-size: 5em;
-	margin: 20px 0px;
+.title{
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-.tiles{
-	position: absolute;
-	top: 100%;
-	width: 100vw;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	margin: 10px;
-	padding: 0px 20px;
-	margin-bottom: 40px;
+.dash-section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
-.tiles .tile{
-	width: 25vw;
-	padding: 20px;
-	border: 1px solid #ccc;
-	box-shadow: 0px 0px 5px #ccc;
-	margin-bottom: 20px;
+.dash-section .dash-img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
 }
-
-.section-mid{
-	position: absolute;
-	top: 130%;
-	width: 90vw;
-	margin: auto;
+.dash-section .dash-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #000;
 }
-
-.section-container{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 40vh;
-	margin: 20px 0px;
-}
-.section-container .content{
-	width: 60%;
-	padding: 50px;
-	border: 2px solid #000;
-	box-shadow: 0px 0px 5px #ccc;
-	line-height: 1.5;
-}
-
-.section-container .content-img{
-	height: 100%;
-	width: 30%;
-}
-.section-container .content-img img{
-	width: 100%;
-	height: 100%;
-}
-.one{
-	order: 1;
+.dash-section .dash-content{
+    margin: 30px;
+    padding: 20px;
+    line-height: 1.6;
 }
 
 h1 {
@@ -231,9 +181,9 @@ nav .close:hover div::after{
     align-items: center;
 }
 
-.footer-container{
-	position: absolute;
-	top: 230%;
+footer{
+    position: absolute;
+    top: 100%;
 	width: 100%;
 	padding: 20px;
 	display: flex;
@@ -273,6 +223,10 @@ footer .footer-content{
     left: 25px;
     font-size: 35px;
   }
+  .title{
+      top: 40px;
+      left: 30px;
+  }
   .tiles{
 	  flex-direction: column;
   }
@@ -295,9 +249,6 @@ footer .footer-content{
   }
   .mt{
 	  margin-top: 100%;
-  }
-  .footer-container{
-	  top: 380%;
   }
   .footer-links ul{
 	  flex-direction: column;

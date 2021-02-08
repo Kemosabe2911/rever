@@ -144,6 +144,14 @@ app.get('/home',ensureAuthenticated,(req,res) =>{
     });
 })
 
+app.get('/dashboard', ensureAuthenticated, (req,res) =>{
+  console.log(req.user);
+  res.render('dashboard',{
+    name: req.user.name,
+    email: req.user.email
+  })
+})
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server running on ${PORT}`))
